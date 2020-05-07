@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Roads.Data;
 using Roads.Models;
+using Roads.Models.ViewModels;
 
 namespace Roads.Controllers
 {
@@ -61,18 +63,44 @@ namespace Roads.Controllers
         }
 
         // GET: Events/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var eventTypeOptions = await _context.EventType.Select(g => new SelectListItem()
+            {
+                Text = g.Name,
+                Value = g.Id.ToString()
+            })
+                .ToListAsync();
+            var viewModel = new EventFormViewModel();
+            viewModel.EventTypeOptions = eventTypeOptions;
+            return View(viewModel);
         }
+
 
         // POST: Events/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(EventFormViewModel eventFormView)
         {
             try
             {
+                var user = await GetCurrentUserAsync();
+                var events = new Event()
+                {
+                    Name = eventFormView.Name,
+                    City = eventFormView.City,
+                    Address = eventFormView.Address,
+                    SecondaryAddress = eventFormView.SecondaryAddress,
+                    Description = eventFormView.Description,
+                    ImagePath = eventFormView.ImagePath,
+                    ApplicationUserId = user.Id,
+                    EventTypeId = eventFormView.EventTypeId,
+                };
+
+
+                _context.Event.Add(events);
+                await _context.SaveChangesAsync();
+
                 // TODO: Add insert logic here
 
                 return RedirectToAction(nameof(Index));

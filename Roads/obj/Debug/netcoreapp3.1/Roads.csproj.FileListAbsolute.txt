@@ -166,3 +166,4 @@ C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Parts\Details.cshtml.g.cs
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Parts\Index.cshtml.g.cs
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Parts\Create.cshtml.g.cs
+C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Events\Create.cshtml.g.cs
