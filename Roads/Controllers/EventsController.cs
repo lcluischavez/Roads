@@ -27,6 +27,7 @@ namespace Roads.Controllers
 
         }
 
+
         // GET: Events
         public async Task<ActionResult> Index(string searchString, string filter)
         {
@@ -69,6 +70,8 @@ namespace Roads.Controllers
             return View(events);
         }
 
+
+
         // GET: Events/Details/1
         public async Task<ActionResult> Details(int id)
         {
@@ -90,6 +93,8 @@ namespace Roads.Controllers
 
             return View(eventt);
         }
+
+
 
         // GET: Events/Create
         public async Task<ActionResult> Create()
@@ -140,6 +145,8 @@ namespace Roads.Controllers
             }
         }
 
+
+
         // GET: Events/Edit/1
         public async Task<ActionResult> Edit(int id)
         {
@@ -163,6 +170,7 @@ namespace Roads.Controllers
 
             return View(viewModel);
         }
+
 
         // POST: Parts/Edit/1
         [HttpPost]
@@ -196,21 +204,34 @@ namespace Roads.Controllers
             }
         }
 
+
+
         // GET: Events/Delete/1
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var eventt = await _context.Event
+                .Include(p => p.ApplicationUser)
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (eventt == null)
+            {
+                return NotFound();
+            }
+
+            return View(eventt);
         }
+
 
         // POST: Events/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                //TODO: Add delete logic here
+                var eventt = await _context.Event.FindAsync(id);
+                _context.Event.Remove(eventt);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -218,6 +239,7 @@ namespace Roads.Controllers
                 return View();
             }
         }
+
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
     }

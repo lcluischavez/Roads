@@ -25,6 +25,7 @@ namespace Roads.Controllers
 
         }
 
+
         // GET: Cars
         public async Task<ActionResult> Index(string searchString)
         {
@@ -42,6 +43,7 @@ namespace Roads.Controllers
 
             return View(cars);
         }
+
 
         // GET: Cars/Details/1
         public async Task<ActionResult> Details(int id)
@@ -64,11 +66,14 @@ namespace Roads.Controllers
             return View(car);
         }
 
+
+
         // GET: Cars/Create
         public ActionResult Create()
         {
             return View();
         }
+
 
         // POST: Cars/Create
         [HttpPost]
@@ -91,11 +96,14 @@ namespace Roads.Controllers
             }
         }
 
+
+
         // GET: Cars/Edit/1
         public ActionResult Edit(int id)
         {
             return View();
         }
+
 
         // POST: Cars/Edit/1
         [HttpPost]
@@ -114,11 +122,14 @@ namespace Roads.Controllers
             }
         }
 
+
+
         // GET: Cars/Delete/1
         public ActionResult Delete(int id)
         {
             return View();
         }
+
 
         // POST: Cars/Delete/1
         [HttpPost]

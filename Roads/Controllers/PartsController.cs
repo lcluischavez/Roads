@@ -27,6 +27,7 @@ namespace Roads.Controllers
 
         }
 
+
         // GET: Parts
         public async Task<ActionResult> Index(string searchString, string filter)
         {
@@ -69,6 +70,8 @@ namespace Roads.Controllers
             return View(parts);
         }
 
+
+
         // GET: Parts/Details/5
         public async Task<ActionResult> Details(int id)
         {
@@ -90,6 +93,8 @@ namespace Roads.Controllers
 
             return View(partt);
         }
+
+
 
         // GET: Parts/Create
         public async Task<ActionResult> Create()
@@ -137,6 +142,8 @@ namespace Roads.Controllers
             }
         }
 
+
+
         // GET: Parts/Edit/1
         public async Task<ActionResult> Edit(int id)
         {
@@ -158,6 +165,7 @@ namespace Roads.Controllers
 
             return View(viewModel);
         }
+
 
         // POST: Parts/Edit/1
         [HttpPost]
@@ -189,11 +197,14 @@ namespace Roads.Controllers
             }
         }
 
+
+
         // GET: Parts/Delete/1
         public ActionResult Delete(int id)
         {
             return View();
         }
+
 
         // POST: Parts/Delete/1
         [HttpPost]
@@ -211,6 +222,7 @@ namespace Roads.Controllers
                 return View();
             }
         }
+
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
     }
