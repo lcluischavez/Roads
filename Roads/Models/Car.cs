@@ -20,7 +20,10 @@ namespace Roads.Models
         [Required]
         [Display(Name = "Original Color")]
         public string Color { get; set; }
+
+        [Display(Name = "Image Url")]
         public string ImagePath { get; set; }
+
         [Display(Name = "Performance")]
         public string PerformanceMods { get; set; }
 

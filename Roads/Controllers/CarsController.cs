@@ -67,11 +67,15 @@ namespace Roads.Controllers
         // POST: Cars/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Car car)
         {
             try
             {
-                // TODO: Add insert logic here
+                var user = await GetCurrentUserAsync();
+                car.ApplicationUserId = user.Id;
+
+                _context.Car.Add(car);
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
