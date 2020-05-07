@@ -28,7 +28,7 @@ namespace Roads.Controllers
         }
 
         // GET: Parts
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchString, string filter)
         {
             var user = await GetCurrentUserAsync();
             var parts = await _context.Part
@@ -36,6 +36,35 @@ namespace Roads.Controllers
                 .Include(tdi => tdi.ApplicationUser)
                 .Include(tdi => tdi.PartType)
                 .ToListAsync();
+
+            switch (filter)
+            {
+                case "Tire & Rims":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 1)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "All":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                default:
+                    parts = await _context.Part
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+            }
+
+            if (searchString != null)
+            {
+                var filteredParts = _context.Part.Where(s => s.Name.Contains(searchString) || s.Brand.Contains(searchString));
+                return View(filteredParts);
+            };
 
             return View(parts);
         }
