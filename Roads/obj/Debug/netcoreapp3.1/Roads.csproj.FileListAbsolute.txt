@@ -169,3 +169,4 @@ C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Events\Create.cshtml.g.cs
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Cars\Create.cshtml.g.cs
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Parts\Edit.cshtml.g.cs
+C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Events\Edit.cshtml.g.cs

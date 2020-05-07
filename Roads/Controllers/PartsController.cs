@@ -94,10 +94,10 @@ namespace Roads.Controllers
         // GET: Parts/Create
         public async Task<ActionResult> Create()
         {
-            var partTypeOptions = await _context.PartType.Select(g => new SelectListItem() 
+            var partTypeOptions = await _context.PartType.Select(p => new SelectListItem() 
             { 
-                Text = g.Name,
-                Value = g.Id.ToString() 
+                Text = p.Name,
+                Value = p.Id.ToString() 
             })
                 .ToListAsync();
             var viewModel = new PartFormViewModel();
@@ -137,15 +137,16 @@ namespace Roads.Controllers
             }
         }
 
+        // GET: Parts/Edit/1
         public async Task<ActionResult> Edit(int id)
         {
-            var partTypes = await _context.PartType.Select(g => new SelectListItem() 
+            var partTypes = await _context.PartType.Select(p => new SelectListItem() 
             { 
-                Text = g.Name, 
-                Value = g.Id.ToString() 
+                Text = p.Name, 
+                Value = p.Id.ToString() 
             })
                .ToListAsync();
-            var part = await _context.Part.FirstOrDefaultAsync(g => g.Id == id);
+            var part = await _context.Part.FirstOrDefaultAsync(p => p.Id == id);
             var viewModel = new PartFormViewModel()
             {
                 Name = part.Name,
@@ -158,7 +159,7 @@ namespace Roads.Controllers
             return View(viewModel);
         }
 
-        // POST: Gears/Edit/5
+        // POST: Parts/Edit/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, PartFormViewModel partFormView)
@@ -188,13 +189,13 @@ namespace Roads.Controllers
             }
         }
 
-        // GET: Parts/Delete/5
+        // GET: Parts/Delete/1
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Parts/Delete/5
+        // POST: Parts/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

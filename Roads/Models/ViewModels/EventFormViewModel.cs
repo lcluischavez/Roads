@@ -9,6 +9,7 @@ namespace Roads.Models.ViewModels
 {
     public class EventFormViewModel
     {
+        [Required]
         public int Id { get; set; }
 
         [Required]

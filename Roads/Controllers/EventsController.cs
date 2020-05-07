@@ -69,7 +69,7 @@ namespace Roads.Controllers
             return View(events);
         }
 
-        // GET: Events/Details/5
+        // GET: Events/Details/1
         public async Task<ActionResult> Details(int id)
         {
             if (id == null)
@@ -94,10 +94,10 @@ namespace Roads.Controllers
         // GET: Events/Create
         public async Task<ActionResult> Create()
         {
-            var eventTypeOptions = await _context.EventType.Select(g => new SelectListItem()
+            var eventTypeOptions = await _context.EventType.Select(e => new SelectListItem()
             {
-                Text = g.Name,
-                Value = g.Id.ToString()
+                Text = e.Name,
+                Value = e.Id.ToString()
             })
                 .ToListAsync();
             var viewModel = new EventFormViewModel();
@@ -140,19 +140,52 @@ namespace Roads.Controllers
             }
         }
 
-        // GET: Events/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Events/Edit/1
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var eventTypes = await _context.EventType.Select(e => new SelectListItem()
+            {
+                Text = e.Name,
+                Value = e.Id.ToString()
+            })
+               .ToListAsync();
+            var eventt = await _context.Event.FirstOrDefaultAsync(e => e.Id == id);
+            var viewModel = new EventFormViewModel()
+            {
+                Name = eventt.Name,
+                City = eventt.City,
+                Address = eventt.Address,
+                SecondaryAddress = eventt.SecondaryAddress,
+                ImagePath = eventt.ImagePath,
+                EventTypeId = eventt.EventTypeId,
+                EventTypeOptions = eventTypes,
+            };
+
+            return View(viewModel);
         }
 
-        // POST: Events/Edit/5
+        // POST: Parts/Edit/1
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, EventFormViewModel eventFormView)
         {
             try
             {
+                var user = await GetCurrentUserAsync();
+                var events = new Event()
+                {
+                    Id = id,
+                    Name = eventFormView.Name,
+                    City = eventFormView.City,
+                    Address = eventFormView.Address,
+                    SecondaryAddress = eventFormView.SecondaryAddress,
+                    ImagePath = eventFormView.ImagePath,
+                    ApplicationUserId = user.Id,
+                    EventTypeId = eventFormView.EventTypeId,
+                };
+
+                _context.Event.Update(events);
+                await _context.SaveChangesAsync();
                 // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
@@ -163,13 +196,13 @@ namespace Roads.Controllers
             }
         }
 
-        // GET: Events/Delete/5
+        // GET: Events/Delete/1
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Events/Delete/5
+        // POST: Events/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

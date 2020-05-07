@@ -43,7 +43,7 @@ namespace Roads.Controllers
             return View(cars);
         }
 
-        // GET: Cars/Details/5
+        // GET: Cars/Details/1
         public async Task<ActionResult> Details(int id)
         {
             if (id == null)
@@ -91,13 +91,13 @@ namespace Roads.Controllers
             }
         }
 
-        // GET: Cars/Edit/5
+        // GET: Cars/Edit/1
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Cars/Edit/5
+        // POST: Cars/Edit/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -114,13 +114,13 @@ namespace Roads.Controllers
             }
         }
 
-        // GET: Cars/Delete/5
+        // GET: Cars/Delete/1
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Cars/Delete/5
+        // POST: Cars/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
