@@ -200,21 +200,31 @@ namespace Roads.Controllers
 
 
         // GET: Parts/Delete/1
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var partt = await _context.Part
+                .Include(p => p.ApplicationUser)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (partt == null)
+            {
+                return NotFound();
+            }
+
+            return View(partt);
         }
 
 
         // POST: Parts/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                //TODO: Add delete logic here
+                var partt = await _context.Part.FindAsync(id);
+                _context.Part.Remove(partt);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch

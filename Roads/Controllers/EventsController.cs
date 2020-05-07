@@ -210,7 +210,7 @@ namespace Roads.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var eventt = await _context.Event
-                .Include(p => p.ApplicationUser)
+                .Include(e => e.ApplicationUser)
                 .FirstOrDefaultAsync(e => e.Id == id);
             if (eventt == null)
             {

@@ -1,0 +1,22 @@
+﻿@model Roads.Models.Part
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Are you sure you want to delete @Html.DisplayFor(model => model.Name) by @Html.DisplayFor(model => model.Brand)?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.ImagePath)*@
+        </dt>
+        <dd class="col-sm-10">
+            <image src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="520" height="450" />
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

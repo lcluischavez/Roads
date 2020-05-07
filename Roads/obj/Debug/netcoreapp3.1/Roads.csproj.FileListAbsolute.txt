@@ -171,3 +171,4 @@ C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Parts\Edit.cshtml.g.cs
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Events\Edit.cshtml.g.cs
 C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Events\Delete.cshtml.g.cs
+C:\Users\Luis Chavez\Desktop\workspace\Roads\Roads\obj\Debug\netcoreapp3.1\Razor\Views\Parts\Delete.cshtml.g.cs
