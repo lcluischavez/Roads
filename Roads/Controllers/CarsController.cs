@@ -26,13 +26,19 @@ namespace Roads.Controllers
         }
 
         // GET: Cars
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchString)
         {
             var user = await GetCurrentUserAsync();
             var cars = await _context.Car
                 .Where(ti => ti.ApplicationUserId == user.Id)
                 .Include(tdi => tdi.ApplicationUser)
                 .ToListAsync();
+
+            if (searchString != null)
+            {
+                var filteredCars = _context.Car.Where(s => s.Make.Contains(searchString) || s.Model.Contains(searchString));
+                return View(filteredCars);
+            };
 
             return View(cars);
         }
