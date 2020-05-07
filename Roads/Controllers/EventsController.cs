@@ -28,7 +28,7 @@ namespace Roads.Controllers
         }
 
         // GET: Events
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchString, string filter)
         {
             var user = await GetCurrentUserAsync();
             var events = await _context.Event
@@ -36,6 +36,35 @@ namespace Roads.Controllers
                 .Include(tdi => tdi.ApplicationUser)
                 .Include(tdi => tdi.EventType)
                 .ToListAsync();
+
+            switch (filter)
+            {
+                case "Tire & Rims":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 1)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "All":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                default:
+                    events = await _context.Event
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+            }
+
+            if (searchString != null)
+            {
+                var filteredEvents = _context.Event.Where(s => s.Name.Contains(searchString) || s.City.Contains(searchString));
+                return View(filteredEvents);
+            };
 
             return View(events);
         }
