@@ -137,19 +137,47 @@ namespace Roads.Controllers
             }
         }
 
-        // GET: Parts/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var partTypes = await _context.PartType.Select(g => new SelectListItem() 
+            { 
+                Text = g.Name, 
+                Value = g.Id.ToString() 
+            })
+               .ToListAsync();
+            var part = await _context.Part.FirstOrDefaultAsync(g => g.Id == id);
+            var viewModel = new PartFormViewModel()
+            {
+                Name = part.Name,
+                Brand = part.Brand,
+                ImagePath = part.ImagePath,
+                PartTypeId = part.PartTypeId,
+                PartTypeOptions = partTypes,
+            };
+
+            return View(viewModel);
         }
 
-        // POST: Parts/Edit/5
+        // POST: Gears/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, PartFormViewModel partFormView)
         {
             try
             {
+                var user = await GetCurrentUserAsync();
+                var parts = new Part()
+                {
+                    Id = id,
+                    Name = partFormView.Name,
+                    Brand = partFormView.Brand,
+                    ImagePath = partFormView.ImagePath,
+                    ApplicationUserId = user.Id,
+                    PartTypeId = partFormView.PartTypeId,
+                };               
+
+                _context.Part.Update(parts);
+                await _context.SaveChangesAsync();
                 // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
