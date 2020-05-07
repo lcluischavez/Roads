@@ -1,33 +1,31 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Roads.Models
+namespace Roads.Models.ViewModels
 {
-    public class Part
+    public class PartFormViewModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         public string Brand { get; set; }
+        [Display(Name = "Image Url")]
         public string ImagePath { get; set; }
 
-        [Required]
+        public List<SelectListItem> PartTypeOptions { get; set; }
+
         public int PartTypeId { get; set; }
 
         [Display(Name = "Part Type")]
         public PartType PartType { get; set; }
 
-        [Required]
         public string ApplicationUserId { get; set; }
 
-
-        [Display(Name = "Posted By")]
-        public ApplicationUser ApplicationUser { get; set; }
     }
 }

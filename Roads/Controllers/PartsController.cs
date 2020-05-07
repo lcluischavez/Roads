@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Roads.Data;
 using Roads.Models;
+using Roads.Models.ViewModels;
 
 namespace Roads.Controllers
 {
@@ -61,18 +63,41 @@ namespace Roads.Controllers
         }
 
         // GET: Parts/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var partTypeOptions = await _context.PartType.Select(g => new SelectListItem() 
+            { 
+                Text = g.Name,
+                Value = g.Id.ToString() 
+            })
+                .ToListAsync();
+            var viewModel = new PartFormViewModel();
+            viewModel.PartTypeOptions = partTypeOptions;
+            return View(viewModel);
         }
+
 
         // POST: Parts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(PartFormViewModel partFormView)
         {
             try
             {
+                var user = await GetCurrentUserAsync();
+                var parts = new Part()
+                {
+                    Name = partFormView.Name,
+                    Brand = partFormView.Brand,
+                    ImagePath = partFormView.ImagePath,
+                    ApplicationUserId = user.Id,
+                    PartTypeId = partFormView.PartTypeId,
+                };
+
+                
+                _context.Part.Add(parts);
+                await _context.SaveChangesAsync();
+
                 // TODO: Add insert logic here
 
                 return RedirectToAction(nameof(Index));
