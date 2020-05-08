@@ -99,19 +99,30 @@ namespace Roads.Controllers
 
 
         // GET: Cars/Edit/1
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var car = await _context.Car.FirstOrDefaultAsync(p => p.Id == id);
+            var loggedInUser = await GetCurrentUserAsync();
+
+            if (car.ApplicationUserId != loggedInUser.Id)
+            {
+                return NotFound();
+            }
+            return View(car);
         }
 
-
-        // POST: Cars/Edit/1
+        // POST: Paintings/Edit/1
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, Car car)
         {
             try
             {
+                var user = await GetCurrentUserAsync();
+                car.ApplicationUserId = user.Id;
+
+                _context.Car.Update(car);
+                await _context.SaveChangesAsync();
                 // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
@@ -125,21 +136,32 @@ namespace Roads.Controllers
 
 
         // GET: Cars/Delete/1
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var car = await _context.Car
+                .Include(p => p.ApplicationUser)
+                .FirstOrDefaultAsync(c => c.Id == id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            return View(car);
         }
 
 
         // POST: Cars/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
 
+                var car = await _context.Car.FindAsync(id);
+                _context.Car.Remove(car);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
