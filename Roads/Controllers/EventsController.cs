@@ -206,6 +206,7 @@ namespace Roads.Controllers
         // GET: Events/Edit/1
         public async Task<ActionResult> Edit(int id)
         {
+            var loggedInUser = await GetCurrentUserAsync();
             var eventTypes = await _context.EventType.Select(e => new SelectListItem()
             {
                 Text = e.Name,
@@ -223,6 +224,11 @@ namespace Roads.Controllers
                 EventTypeId = eventt.EventTypeId,
                 EventTypeOptions = eventTypes,
             };
+
+            if (eventt.ApplicationUserId != loggedInUser.Id)
+            {
+                return NotFound();
+            }
 
             return View(viewModel);
         }
