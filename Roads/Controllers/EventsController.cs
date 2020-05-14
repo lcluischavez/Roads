@@ -33,7 +33,7 @@ namespace Roads.Controllers
         {
             var user = await GetCurrentUserAsync();
             var events = await _context.Event
-                .Where(ti => ti.ApplicationUserId == user.Id)
+                //.Where(ti => ti.ApplicationUserId == user.Id)
                 .Include(tdi => tdi.ApplicationUser)
                 .Include(tdi => tdi.EventType)
                 .ToListAsync();

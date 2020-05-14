@@ -31,7 +31,7 @@ namespace Roads.Controllers
         {
             var user = await GetCurrentUserAsync();
             var cars = await _context.Car
-                .Where(ti => ti.ApplicationUserId == user.Id)
+                //.Where(ti => ti.ApplicationUserId == user.Id)
                 .Include(tdi => tdi.ApplicationUser)
                 .ToListAsync();
 
