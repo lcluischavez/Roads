@@ -271,10 +271,12 @@ namespace Roads.Controllers
         // GET: Events/Delete/1
         public async Task<ActionResult> Delete(int id)
         {
+            var loggedInUser = await GetCurrentUserAsync();
+
             var eventt = await _context.Event
                 .Include(e => e.ApplicationUser)
                 .FirstOrDefaultAsync(e => e.Id == id);
-            if (eventt == null)
+            if (eventt.ApplicationUserId != loggedInUser.Id)
             {
                 return NotFound();
             }
