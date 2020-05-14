@@ -211,12 +211,14 @@ namespace Roads.Controllers
         // GET: Parts/Edit/1
         public async Task<ActionResult> Edit(int id)
         {
+            var loggedInUser = await GetCurrentUserAsync();
             var partTypes = await _context.PartType.Select(p => new SelectListItem() 
             { 
                 Text = p.Name, 
                 Value = p.Id.ToString() 
             })
                .ToListAsync();
+
             var part = await _context.Part.FirstOrDefaultAsync(p => p.Id == id);
             var viewModel = new PartFormViewModel()
             {
@@ -226,6 +228,11 @@ namespace Roads.Controllers
                 PartTypeId = part.PartTypeId,
                 PartTypeOptions = partTypes,
             };
+
+            if (part.ApplicationUserId != loggedInUser.Id)
+            {
+                return NotFound();
+            }
 
             return View(viewModel);
         }
@@ -266,10 +273,12 @@ namespace Roads.Controllers
         // GET: Parts/Delete/1
         public async Task<ActionResult> Delete(int id)
         {
+            var loggedInUser = await GetCurrentUserAsync();
             var partt = await _context.Part
                 .Include(p => p.ApplicationUser)
                 .FirstOrDefaultAsync(p => p.Id == id);
-            if (partt == null)
+
+            if (partt.ApplicationUserId != loggedInUser.Id)
             {
                 return NotFound();
             }

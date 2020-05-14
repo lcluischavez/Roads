@@ -213,6 +213,7 @@ namespace Roads.Controllers
                 Value = e.Id.ToString()
             })
                .ToListAsync();
+
             var eventt = await _context.Event.FirstOrDefaultAsync(e => e.Id == id);
             var viewModel = new EventFormViewModel()
             {
@@ -276,6 +277,7 @@ namespace Roads.Controllers
             var eventt = await _context.Event
                 .Include(e => e.ApplicationUser)
                 .FirstOrDefaultAsync(e => e.Id == id);
+
             if (eventt.ApplicationUserId != loggedInUser.Id)
             {
                 return NotFound();
