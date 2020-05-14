@@ -31,6 +31,7 @@ namespace Roads.Models
         public string AstheticMods { get; set; }
         [Required]
         public string ApplicationUserId { get; set; }
+        [Display(Name = "By")]
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

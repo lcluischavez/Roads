@@ -48,6 +48,70 @@ namespace Roads.Controllers
                         .Include(ti => ti.PartType)
                         .ToListAsync();
                     break;
+                case "Engine & Exhaust":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 2)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Turbos & Superchargers":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 3)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Brakes, Suspension, & Chasis":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 5)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Fuel System":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 6)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Coolant & Air System":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 7)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Transmission":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 9)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Body Parts":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 10)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
+                case "Other":
+                    parts = await _context.Part
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.PartTypeId == 11)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.PartType)
+                        .ToListAsync();
+                    break;
                 case "All":
                     parts = await _context.Part
                         //.Where(ti => ti.UserId == user.Id)

@@ -40,10 +40,66 @@ namespace Roads.Controllers
 
             switch (filter)
             {
-                case "Tire & Rims":
+                case "General Car Shows":
                     events = await _context.Event
                         //.Where(ti => ti.UserId == user.Id)
                         .Where(ti => ti.EventTypeId == 1)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Classic & Hot Rod Show":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 4)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Stance Car Show":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 5)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Racing Festival":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 6)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Brand Specific":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 7)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Cruise & Drive":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 1004)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Rally":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 1005)
+                        //.Where(p => p.Quantity > 0)
+                        .Include(ti => ti.EventType)
+                        .ToListAsync();
+                    break;
+                case "Racing/Drifting Events":
+                    events = await _context.Event
+                        //.Where(ti => ti.UserId == user.Id)
+                        .Where(ti => ti.EventTypeId == 1006)
                         //.Where(p => p.Quantity > 0)
                         .Include(ti => ti.EventType)
                         .ToListAsync();
