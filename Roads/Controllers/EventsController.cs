@@ -40,7 +40,7 @@ namespace Roads.Controllers
 
             switch (filter)
             {
-                case "General Car Shows":
+                case "General Car Show":
                     events = await _context.Event
                         //.Where(ti => ti.UserId == user.Id)
                         .Where(ti => ti.EventTypeId == 1)
