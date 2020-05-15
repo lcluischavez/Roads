@@ -304,6 +304,10 @@ namespace Roads.Migrations
                     b.Property<string>("SecondaryAddress")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");

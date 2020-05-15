@@ -214,6 +214,7 @@ namespace Roads.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     City = table.Column<string>(nullable: false),
+                    State = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     SecondaryAddress = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -335,40 +336,7 @@ namespace Roads.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "Car");
-
-            migrationBuilder.DropTable(
                 name: "Event");
-
-            migrationBuilder.DropTable(
-                name: "Part");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "EventType");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "PartType");
         }
     }
 }

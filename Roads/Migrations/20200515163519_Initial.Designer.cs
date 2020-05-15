@@ -10,7 +10,7 @@ using Roads.Data;
 namespace Roads.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200507062852_Initial")]
+    [Migration("20200515163519_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -304,6 +304,10 @@ namespace Roads.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecondaryAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

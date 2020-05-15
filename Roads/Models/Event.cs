@@ -17,6 +17,9 @@ namespace Roads.Models
         [Required]
         public string City { get; set; }
 
+        //[Required]
+        //public string State { get; set; }
+
         [Required]
         public string Address { get; set; }
 
