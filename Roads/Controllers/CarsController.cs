@@ -138,10 +138,17 @@ namespace Roads.Controllers
         // GET: Cars/Delete/1
         public async Task<ActionResult> Delete(int id)
         {
+            var loggedInUser = await GetCurrentUserAsync();
             var car = await _context.Car
                 .Include(p => p.ApplicationUser)
                 .FirstOrDefaultAsync(c => c.Id == id);
+
             if (car == null)
+            {
+                return NotFound();
+            }
+
+            if (car.ApplicationUserId != loggedInUser.Id)
             {
                 return NotFound();
             }
