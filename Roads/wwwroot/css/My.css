@@ -1,21 +1,68 @@
-﻿.EBan {
+﻿body {
+    background-image: url(/Images/MBanner4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    min-height: 500px;
-    background-image: url(/Images/EventBanner.jpg);
+    position: relative;
+    color: white;
+}
+.EBan {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-height: 520px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/Images/S15Banner.jpg);
     background-position: center;
 }
 
 #eBanText {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    color: white;
 }
 
 .PBan {
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    min-height: 500px;
-    background-image: url(/Images/PartBanner.jpg);
+    position: relative;
+    min-height: 520px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/Images/HuracanBanner.jpg);
     background-position: top;
 }
 
 #pBanText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    color: white;
+}
+
+.CBan {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-height: 520px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/Images/BimmerBanner.jpg);
+    background-position: top;
+}
+
+#cBanText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.TIndex {
+    background-color: white;
 }
