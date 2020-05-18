@@ -1,0 +1,21 @@
+﻿.EBan {
+    background-size: cover;
+    min-height: 500px;
+    background-image: url(/Images/EventBanner.jpg);
+    background-position: center;
+}
+
+#eBanText {
+    text-align: center;
+}
+
+.PBan {
+    background-size: cover;
+    min-height: 500px;
+    background-image: url(/Images/PartBanner.jpg);
+    background-position: top;
+}
+
+#pBanText {
+    text-align: center;
+}
