@@ -13,6 +13,8 @@
     line-height: 1.2;
 }
 
+/*All----------------------*/
+
 .TIndex {
     background-color: white;
 }
@@ -21,6 +23,7 @@
     flex-direction: column;
     flex-basis: auto;
 }
+
 /*Events-------------------*/
 .EBan {
     background-position: center;

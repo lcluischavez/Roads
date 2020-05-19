@@ -1,14 +1,22 @@
 ﻿@model IEnumerable<Roads.Models.Car>
 
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Index";
+}
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
 }
 
 <div class="CBan">
     <h1 class="display-4" id="cBanText">Car Builds</h1>
     @*<p id="pBanText">Here are some parts</p>*@
 </div>
-<br/>
+<br />
 <form asp-controller="Cars" asp-action="Index">
     <div>
         <input type="text" name="SearchString" placeholder=" Search by Make or Model...">
@@ -60,9 +68,18 @@
                     @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    @if (item.ApplicationUserId != currentUser.Id)
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        <br />
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        <br />
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
                 </td>
             </tr>
         }
