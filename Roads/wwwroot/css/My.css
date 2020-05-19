@@ -3,9 +3,25 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    position: page;
     color: white;
 }
+
+.display-4 {
+    font-size: 6.0rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.TIndex {
+    background-color: white;
+}
+
+.TContainer {
+    flex-direction: column;
+    flex-basis: auto;
+}
+/*Events-------------------*/
 .EBan {
     background-position: center;
     background-repeat: no-repeat;
@@ -25,25 +41,7 @@
     color: white;
 }
 
-.PBan {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    min-height: 520px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/Images/HuracanBanner.jpg);
-    background-position: top;
-}
-
-#pBanText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-}
-
+/*Cars-------------------*/
 .CBan {
     background-position: center;
     background-repeat: no-repeat;
@@ -63,6 +61,22 @@
     color: white;
 }
 
-.TIndex {
-    background-color: white;
+/*Parts-------------------*/
+.PBan {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-height: 520px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/Images/HuracanBanner.jpg);
+    background-position: top;
+}
+
+#pBanText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
 }

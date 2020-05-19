@@ -16,7 +16,10 @@
         <input type="submit" value="Search" />
     </div>
 </form>
-<br />
+<br/>
+<p>
+    <a type="submit" asp-action="Create">Create New</a>
+</p>
 <br />
 <div>
     <a type="button" class="btn btn-success mb-2" asp-action="Index" asp-route-filter="General Car Show">General Car Shows</a>
@@ -30,10 +33,6 @@
     <a type="button" class="btn btn-info mb-2" asp-action="Index" asp-route-filter="All">Show All</a>
 </div>
 <br />
-<br />
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -58,7 +57,7 @@
     <tbody class="TIndex">
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="TContainer">
                 <td>
                     <image src="@Html.DisplayFor(modelItem => item.ImagePath)" alt="Product Image Unavailable" width="320" height="250" />
                 </td>

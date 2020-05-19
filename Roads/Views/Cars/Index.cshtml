@@ -16,7 +16,6 @@
     </div>
 </form>
 <br />
-<br />
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -44,7 +43,7 @@
     <tbody class="TIndex">
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="TContainer">
                 <td>
                     <image src="@Html.DisplayFor(modelItem => item.ImagePath)" alt="Product Image Unavailable" width="340" max-height="250" />
                 </td>
