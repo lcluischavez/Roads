@@ -13,14 +13,19 @@
 }
 
 
-<h1>@Html.DisplayFor(model => model.Brand) - @Html.DisplayFor(model => model.Name)</h1>
 <div>
-    <dl class="row">
+    <dl id="deets" class="row">
         <dt class="col-sm-2">
             @*@Html.DisplayNameFor(model => model.ImagePath)*@
         </dt>
         <dd class="col-sm-10">
             <image src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="500" height="500" />
+        </dd>
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Part)*@
+        </dt>
+        <dd class="col-sm-10" color="gray">
+            <h3>@Html.DisplayFor(model => model.Brand) - @Html.DisplayFor(model => model.Name)</h3>
         </dd>
         <dt class="col-sm-2">
             @*@Html.DisplayNameFor(model => model.PartType)*@
@@ -33,6 +38,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ApplicationUser.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.Email)
         </dd>
     </dl>
 </div>
