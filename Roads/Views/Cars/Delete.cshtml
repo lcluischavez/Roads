@@ -4,17 +4,10 @@
     ViewData["Title"] = "Delete";
 }
 
-    <h3>Are you sure you want to delete @Html.DisplayFor(model => model.Year) @Html.DisplayFor(model => model.Make) @Html.DisplayFor(model => model.Make)?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @*@Html.DisplayNameFor(model => model.ImagePath)*@
-        </dt>
-        <dd class="col-sm-10">
-            <image src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="520" height="450" />
-        </dd>
-    </dl>
+
+<div id="deets">
+    <image class="DeetTitle" src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="520" height="450" />
+    <h3 class="DeetTitle">Are you sure you want to delete @Html.DisplayFor(model => model.Year) @Html.DisplayFor(model => model.Make) @Html.DisplayFor(model => model.Make)?</h3>
     
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
