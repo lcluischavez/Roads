@@ -47,10 +47,18 @@
     align-items: center;
 }
 
-#deetBody {
-    display: flex   !important;
-    flex-direction: row          !important;
+.DeetTitle{
+    text-align: center;
 }
+
+/*#deetImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    align-self: center;
+}*/
+
 
 
 /*Events-------------------*/

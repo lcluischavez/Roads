@@ -15,36 +15,26 @@
 
 <div>
     <dl id="deets" class="row">
-        <dt class="col-sm-2">
-            @*@Html.DisplayNameFor(model => model.ImagePath)*@
-        </dt>
-        <dd class="col-sm-10">
+        <div>
             <image src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="500" height="500" />
-        </dd>
-        <dt class="col-sm-2">
-            @*@Html.DisplayNameFor(model => model.Part)*@
-        </dt>
-        <dd class="col-sm-10" color="gray">
-            <h3>@Html.DisplayFor(model => model.Brand) - @Html.DisplayFor(model => model.Name)</h3>
-        </dd>
-        <dt class="col-sm-2">
-            @*@Html.DisplayNameFor(model => model.PartType)*@
-        </dt>
-        <dd class="col-sm-10" color="gray">
-            @Html.DisplayFor(model => model.PartType.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ApplicationUser)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ApplicationUser.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ApplicationUser.Email)
-        </dd>
+            <br/>
+            <h3 class="DeetTitle">@Html.DisplayFor(model => model.Brand) - @Html.DisplayFor(model => model.Name)</h3>
+            <div class="DeetTitle">
+                @Html.DisplayFor(model => model.PartType.Name)
+            </div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApplicationUser)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.Email)
+            </dd>
+        </div>
     </dl>
 </div>
 <div>

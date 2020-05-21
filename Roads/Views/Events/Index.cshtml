@@ -48,11 +48,12 @@
                     @*@Html.DisplayNameFor(model => model.ImagePath)*@
                 </th>
                 <th>
-                    @*@Html.DisplayNameFor(model => model.Name)*@
-                </th>
-                <th>
                     @*@Html.DisplayNameFor(model => model.Address)*@
                 </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Name)*@
+                </th>
+                
                 <th>
                     @*@Html.DisplayNameFor(model => model.EventType)*@
                 </th>
@@ -71,14 +72,15 @@
                     <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
                 </td>
                 <td class="TPart">
+                    @Html.DisplayFor(modelItem => item.EventType.Name)
+                </td>
+                <td class="TPart">
                     <div class="Addy">
                         <div>@Html.DisplayFor(modelItem => item.Address)</div>
                         <div>@Html.DisplayFor(modelItem => item.City)@*, @Html.DisplayFor(modelItem => item.State)*@</div>
                     </div>
                 </td>
-                <td class="TPart">
-                    @Html.DisplayFor(modelItem => item.EventType.Name)
-                </td>
+                
                 <td class="TButt">
                     @if (item.ApplicationUserId != currentUser.Id)
                     {

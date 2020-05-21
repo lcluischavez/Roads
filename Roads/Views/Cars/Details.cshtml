@@ -13,46 +13,42 @@
 }
 
 
-<h1>
-    @Html.DisplayFor(model => model.Make) @Html.DisplayFor(model => model.Model) @Html.DisplayFor(model => model.Year)
-</h1>
+
 <div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @*@Html.DisplayNameFor(model => model.ImagePath)*@
-        </dt>
-        <dd class="col-sm-10">
-            <image src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="545" height="440" />
-        </dd>
-        <dt class="col-sm-2">
-            <h5>Modifications</h5>
-        </dt>
-        <dd class="col-sm-10">
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PerformanceMods)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PerformanceMods)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AstheticMods)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AstheticMods)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-        <dt class="col-sm-2">
-            By.
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ApplicationUser.FirstName)
-        </dd>
+    <dl id="deets" class="row">
+        <image src="@Html.DisplayFor(model => model.ImagePath)" alt="Product Image Unavailable" width="545" height="440" />
+        <h3 class="DeetTitle">@Html.DisplayFor(model => model.Make) @Html.DisplayFor(model => model.Model) @Html.DisplayFor(model => model.Year) </h3>
+        <div>
+            <dt class="col-sm-2">
+                <h5>Modifications</h5>
+            </dt>
+            <dd class="col-sm-10">
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PerformanceMods)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PerformanceMods)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AstheticMods)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AstheticMods)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+            <dt class="col-sm-2">
+                By.
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.FirstName)
+            </dd>
+        </div>
     </dl>
 </div>
 <div>
